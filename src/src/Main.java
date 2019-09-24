@@ -13,7 +13,7 @@ public class Main {
             Scanner fichier = new Scanner(new File("sac0"));
             cap = fichier.nextInt();
 
-            ArrayList<Objet> sac = new ArrayList<>();
+            ArrayList<Objet> objets = new ArrayList<>();
             Objet objet;
             while (fichier.hasNextInt()) {
                 poids = fichier.nextInt();
@@ -21,14 +21,19 @@ public class Main {
                 valeur= fichier.nextInt();
                 //System.out.println(nombre);
                 objet = new Objet(poids,valeur);
-                sac.add(objet);
+                objets.add(objet);
             }
-            Collections.sort(sac);
-            for(Objet element :sac){
+
+            Collections.sort(objets);
+            for(Objet element :objets){
                 System.out.println(element.getRatio());
             }
+            System.out.println("                      ");
+            SacADos sac =new SacADos(cap,objets);
+            sac.remplirSac();
 
-
+            System.out.println(objets.size());
+            System.out.println(sac.getValeur());
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }

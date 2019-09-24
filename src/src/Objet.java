@@ -2,14 +2,13 @@ public class Objet implements Comparable<Objet> {
     float valeur;
     float poids;
     float ratio;
-    boolean present;
 
 
     public Objet(float poids, float valeur) {
         this.valeur = valeur;
         this.poids = poids;
-        this.ratio = poids / valeur;
-        this.present = false;
+        this.ratio = valeur / poids;
+
     }
 
 
@@ -35,14 +34,6 @@ public class Objet implements Comparable<Objet> {
 
     public void setRatio(float ratio) {
         this.ratio = ratio;
-    }
-
-    public boolean isPresent() {
-        return present;
-    }
-
-    public void setPresent(boolean present) {
-        this.present = present;
     }
 
     @Override
