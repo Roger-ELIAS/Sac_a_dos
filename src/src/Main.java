@@ -7,33 +7,28 @@ public class Main {
 
     public static void main(String[] args) {
         try {
-            float poids;
-            float valeur;
-            float cap;
+            float weight;
+            float value;
+            float capacity;
             Scanner fichier = new Scanner(new File("sac0"));
-            cap = fichier.nextInt();
-
+            capacity = fichier.nextInt();
+            int cpt =1;
             ArrayList<Objet> objets = new ArrayList<>();
             Objet objet;
             while (fichier.hasNextInt()) {
-                poids = fichier.nextInt();
-                //System.out.print(nombre +" ");
-                valeur= fichier.nextInt();
-                //System.out.println(nombre);
-                objet = new Objet(poids,valeur);
+                weight = fichier.nextInt();
+                value= fichier.nextInt();
+                objet = new Objet(weight,value,cpt);
+                cpt += 1;
                 objets.add(objet);
             }
 
             Collections.sort(objets);
-            for(Objet element :objets){
-                System.out.println(element.getRatio());
-            }
-            System.out.println("                      ");
-            SacADos sac =new SacADos(cap,objets);
-            sac.remplirSac();
 
-            System.out.println(objets.size());
-            System.out.println(sac.getValeur());
+            BranchAndBound bb = new BranchAndBound(objets,capacity);
+            bb.branch_bound(capacity,0,0);
+
+
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }

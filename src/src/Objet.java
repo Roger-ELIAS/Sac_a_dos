@@ -1,45 +1,37 @@
 public class Objet implements Comparable<Objet> {
-    float valeur;
-    float poids;
+    float value;
+    float weight;
     float ratio;
+    int index;
 
-
-    public Objet(float poids, float valeur) {
-        this.valeur = valeur;
-        this.poids = poids;
-        this.ratio = valeur / poids;
-
+    public Objet(float weight, float value,int index) {
+        this.value = value;
+        this.weight = weight;
+        this.ratio = value / weight;
+        this.index = index;
     }
 
-
-    public float getValeur() {
-        return valeur;
+    public float getValue() {
+        return value;
     }
 
-    public void setValeur(float valeur) {
-        this.valeur = valeur;
-    }
-
-    public float getPoids() {
-        return poids;
-    }
-
-    public void setPoids(float poids) {
-        this.poids = poids;
+    public float getWeight() {
+        return weight;
     }
 
     public float getRatio() {
         return ratio;
     }
 
-    public void setRatio(float ratio) {
-        this.ratio = ratio;
-    }
+    public int getIndex() { return index; }
 
+    /*Comparateur entre les differents ratio des objets */
     @Override
     public int compareTo(Objet o) {
         if(this.getRatio() < o.getRatio())
             return  1;
         return -1;
     }
+
+
 }
