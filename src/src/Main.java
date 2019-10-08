@@ -1,3 +1,4 @@
+import javax.sound.midi.Soundbank;
 import java.io.*;
 import java.util.Collections;
 import java.util.Scanner;
@@ -15,7 +16,7 @@ public class Main {
             ArrayList<Objet> objets = new ArrayList<>();
             Objet objet;
 
-            Scanner file = new Scanner(new File("sac4"));
+            Scanner file = new Scanner(new File("sac0"));
             capacity = file.nextInt();
 
             int cpt =1;
@@ -38,15 +39,17 @@ public class Main {
             System.out.println("Objet dans le Sac : ");
 
             float valeur = 0;
+            float poidssac = 0;
             for(Objet obj : BestBag ){
                 if (obj == null) continue;
                 else
                     System.out.print(obj.getIndex()+ " ");
                     valeur = valeur + obj.getValue();
-
+                    poidssac = poidssac + obj.getWeight();
             }
 
             System.out.println("\n"+ "Valeur du Sac : " + valeur);
+            System.out.println("\n"+ "Poids du Sac : " + poidssac);
 
             final long end = System.nanoTime() ;
             final long time = (end - start) / 1_000_000 ;
